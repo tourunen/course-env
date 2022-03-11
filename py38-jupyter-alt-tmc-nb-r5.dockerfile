@@ -47,6 +47,9 @@ RUN pip install --no-cache-dir --upgrade pip \
 RUN sed -i "s|# c.NotebookApp.notebook_dir =.*|c.NotebookApp.notebook_dir = '${WORK_DIR}'|g" \
     /home/jovyan/.jupyter/jupyter_notebook_config.py
 
+# link predownloaded stanza resources in shared folder to the default location
+RUN ln -s /home/jovyan/shared/stanza_resources /home/jovyan/stanza_resources
+
 # Switch to root
 USER root
 
